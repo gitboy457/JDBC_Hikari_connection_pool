@@ -6,7 +6,7 @@ import com.ace.jdbcDemo.entity.Customer;
 import com.ace.jdbcDemo.repository.CustomerRepository;
 import com.ace.jdbcDemo.repository.CustomerRepositoryImp;
 
-public class MainApplication {
+public class Application {
 	
 	
 	private static CustomerRepository customerRepository;
