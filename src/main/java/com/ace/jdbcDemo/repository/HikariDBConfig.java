@@ -29,15 +29,10 @@ public class HikariDBConfig {
 
 	}
 
-	// String configFile = "src/main/resources/db.properties";
-
 	private static HikariConfig cfg = getHikariConfig();
 	private static HikariDataSource ds = new HikariDataSource(cfg);
-
 	private Connection con = null;
 
-	
-	
 	public HikariDBConfig() {
 		super();
 	}
@@ -45,9 +40,8 @@ public class HikariDBConfig {
 	public Connection getNewDBConnection() {
 
 		try {
-
-			con = ds.getConnection();
-			con.setAutoCommit(false);
+				con = ds.getConnection();
+				con.setAutoCommit(false);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -58,10 +52,13 @@ public class HikariDBConfig {
 
 	private static HikariConfig getHikariConfig() {
 		HikariConfig hc = new HikariConfig();
+		// set db configuration
 		hc.setDriverClassName(prop.getProperty("db.mysql.driver.class.name"));
 		hc.setJdbcUrl(prop.getProperty("db.mySql.jdbcUrl"));
 		hc.setUsername(prop.getProperty("db.mySql.user"));
 		hc.setPassword(prop.getProperty("db.mySql.password"));
+
+		// set pool configuration
 		hc.setMaximumPoolSize(Integer.parseInt(prop.getProperty("db.mysql.connectionPool.size")));
 		hc.setAutoCommit(Boolean.parseBoolean(prop.getProperty("db.mysql.connectionPool.autoCommit")));
 		return hc;
